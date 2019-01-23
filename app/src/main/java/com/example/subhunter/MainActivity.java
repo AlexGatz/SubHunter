@@ -14,12 +14,28 @@ import java.util.Random;
 
 public class MainActivity extends Activity {
 
+    // Class scope variables
+    int screenWidth, screenHeight;
+    int blockSize;
+    int gridWidth = 40;
+    int gridHeight;
+    float horizontalTouched = -100;
+    float verticalTouched = -100;
+    int subHorizontalPos, subVerticalPos;
+    boolean hit = false;
+    int shotsFired;
+    int distanceFromSub;
+
     // Android runs this code just before the player sees the app. This makes it a good place to add
     // the code for the 'one-time' setup phase.
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Get the current device's screen res
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size); 
 
         // Game code
         Log.d("Debugging", "In onCreate");
